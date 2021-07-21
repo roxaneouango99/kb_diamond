@@ -7,7 +7,22 @@ MAINTAINER KBase Developer
 # installation scripts.
 
 # RUN apt-get update
-
+RUN \
+    apt-get update && \
+    apt-get -y install gcc
+# The packages below are required for compiling diamond
+RUN apt-get install wget
+RUN apt-get install --yes cmake
+RUN apt-get install --yes build-essential
+RUN apt-get install --yes zlib1g-dev
+RUN wget http://github.com/bbuchfink/diamond/archive/v2.0.4.tar.gz && \
+    tar xzf v2.0.4.tar.gz && \
+    cd diamond-2.0.4 && \
+    mkdir bin && \
+    cd bin && \
+    cmake -DCMAKE_BUILD_MARCH=native .. && \
+    make -j4 && \
+    make install
 
 # -----------------------------------------
 
