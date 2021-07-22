@@ -3,11 +3,9 @@ import os
 import time
 import unittest
 from configparser import ConfigParser
-
 from kb_diamond.kb_diamondImpl import kb_diamond
 from kb_diamond.kb_diamondServer import MethodContext
 from kb_diamond.authclient import KBaseAuth as _KBaseAuth
-
 from installed_clients.WorkspaceClient import Workspace
 
 
@@ -35,7 +33,7 @@ class kb_diamondTest(unittest.TestCase):
                             {'service': 'kb_diamond',
                              'method': 'please_never_use_it_in_production',
                              'method_params': []
-                             }],
+                            }],
                         'authenticated': 1})
         cls.wsURL = cls.cfg['workspace-url']
         cls.wsClient = Workspace(cls.wsURL)
